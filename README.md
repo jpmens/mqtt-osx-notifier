@@ -3,6 +3,8 @@
 Subscribes to any number of MQTT topics and notifies to the OSX notification
 area (whatever that may be called officially ...)
 
+![OSX notifier](jmbp-620.png)
+
 Configuration is expected in the `mqtt-osx-notifier.ini` file (a sample template is
 provided, which has to be renamed):
 
