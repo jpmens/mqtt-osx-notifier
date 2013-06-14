@@ -70,7 +70,7 @@ mqttc.on_subscribe = on_subscribe
 
 mqttc.will_set('clients/mqtt-osx-notifier', payload="Adios!", qos=0, retain=False)
 
-mqttc.connect(cf.get('mqtt', 'broker'), int(cf.get('mqtt', 'port')), 60)
+mqttc.connect(cf.get('mqtt', 'broker'), cf.getint('mqtt', 'port'), 60)
 
 try:
     mqttc.loop_forever()
