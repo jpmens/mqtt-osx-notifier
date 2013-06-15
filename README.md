@@ -40,5 +40,5 @@ After a few seconds, you should see the result on the top-right of your OSX mach
 
 ## Requirements
 
-* [pync](https://github.com/setem/pync) which uses the binary `terminal-notifier`. Note:
+* [pync](https://github.com/setem/pync) which uses the binary [terminal-notifier](https://github.com/alloy/terminal-notifier) created by Eloy Durán. Note:
   upon first launch, `pync` will download and extract `https://github.com/downloads/alloy/terminal-notifier/terminal-notifier_1.4.2.zip` into a directory `vendor/`.
