@@ -25,9 +25,9 @@ topic3 = jp/#
 You can specify any number of topics in the `[topics]` section; the key name
 is ignored.
 
-`mqtt-osx-notifier` connect to the specified MQTT broker and subscribes to the list
-of topics. For each message received on a topic, `mqtt-prowl` will notify
-your OSX.
+`mqtt-osx-notifier` connects to the specified MQTT broker and subscribes to the list
+of topics. For each message received on a topic, `mqtt-osx-notifier` will notify
+your OSX desktop.
 
 Publish a test message to your broker, specifying one of the topics `mqtt-osx-notifier` is
 subscribed to:
