@@ -17,6 +17,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 import mosquitto
+import socket
 import sys, time
 from ConfigParser import SafeConfigParser
 from pync import Notifier   # https://github.com/SeTem/pync
@@ -70,10 +71,16 @@ mqttc.on_subscribe = on_subscribe
 
 mqttc.will_set('clients/mqtt-osx-notifier', payload="Adios!", qos=0, retain=False)
 
+# Delays will be: 3, 6, 12, 24, 30, 30, ...
+mqttc.reconnect_delay_set(delay=3, delay_max=30, exponential_backoff=True)
+
 mqttc.connect(cf.get('mqtt', 'broker'), cf.getint('mqtt', 'port'), 60)
 
-try:
-    mqttc.loop_forever()
-except KeyboardInterrupt:
-    sys.exit(0)
+while True:
+    try:
+        mqttc.loop_forever()
+    except socket.error:
+        time.sleep(5)
+    except KeyboardInterrupt:
+        sys.exit(0)
 
