@@ -21,6 +21,7 @@ import socket
 import sys, time
 from ConfigParser import SafeConfigParser
 from pync import Notifier   # https://github.com/SeTem/pync
+import os
 
 def config(inifile):
     cf = SafeConfigParser()
@@ -32,7 +33,7 @@ def on_connect(mosq, userdata, rc):
     print "Connected"
     for topic in userdata['topics']:
         print "Subscribing to " + topic
-        mqttc.subscribe(topic, 0)
+        mqttc.subscribe(topic, 2)
 
 def on_message(mosq, userdata, msg):
     print(msg.topic+" "+str(msg.qos)+" "+str(msg.payload))
@@ -63,7 +64,8 @@ userdata = {
     'topics' : topics,
 }
 
-mqttc = mosquitto.Mosquitto(userdata=userdata)
+clientid = 'mqtt-osx-notifier-%s' % os.getpid()
+mqttc = mosquitto.Mosquitto(clientid, userdata=userdata, clean_session=False)
 mqttc.on_message = on_message
 mqttc.on_connect = on_connect
 mqttc.on_disconnect = on_disconnect
