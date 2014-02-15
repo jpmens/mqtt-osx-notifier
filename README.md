@@ -1,5 +1,7 @@
 # MQTT-OSX-NOTIFIER
 
+** This program is obsolete: see [mqttwarn](https://github.com/jpmens/mqttwarn) for a much more capable program **
+
 Subscribes to any number of MQTT topics and notifies to the OSX notification
 area (whatever that may be called officially ...)
 
